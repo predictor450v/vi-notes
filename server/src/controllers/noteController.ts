@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Note from "../models/Note";
 
-// POST /api/notes — create a new note
+// route will post req here
 export const createNote = async (req: Request, res: Response): Promise<void> => {
   try {
     const { title, content } = req.body;
