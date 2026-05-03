@@ -1,4 +1,4 @@
-/* ── Reset & Base ─────────────────────────────── */
+/* ── Reset & Base ──*/
 
 *,
 *::before,
@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-/* ── App Shell ───────────────────────────────── */
+/* ── App Shell ───*/
 
 .app {
   width: 100%;
@@ -18,7 +18,7 @@
   font-family: "Georgia", "Times New Roman", serif;
 }
 
-/* ── Editor Layout ───────────────────────────── */
+/* ── Editor Layout ────*/
 
 .editor {
   display: flex;
@@ -29,21 +29,21 @@
   padding: 24px 24px 40px;
 }
 
-/* ── Logo ────────────────────────────────────── */
+/* ── Logo ───*/
 
 .logo {
   position: fixed;
   top: 20px;
   left: 24px;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #1a1a1a;
   letter-spacing: 0.02em;
   user-select: none;
 }
 
-/* ── Title Input ─────────────────────────────── */
+/* ── Title Input ───*/
 
 .editor-title {
   width: 100%;
@@ -64,7 +64,7 @@
   color: #b0b0a8;
 }
 
-/* ── Body Textarea ───────────────────────────── */
+/* ── Body Textarea ──*/
 
 .editor-body {
   flex: 1;
@@ -85,7 +85,7 @@
   color: #b0b0a8;
 }
 
-/* ── Submit Button ───────────────────────────── */
+/* ── Submit Button ── */
 
 .submit-btn {
   margin-top: 24px;

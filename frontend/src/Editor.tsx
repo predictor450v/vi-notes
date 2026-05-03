@@ -15,27 +15,27 @@ const Editor: React.FC = () => {
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [saveStatus, setSaveStatus] = useState<string>("");
 
-  // Save note to backend
+  // Handle form submission to save the note to the backend
   const handleSubmit = async () => {
     const currentTitle = title.trim() || "Untitled";
     const currentBody = body;
 
-    // Nothing to save if both are empty
+    // Do nothing if both title and body are completely empty
     if (currentTitle === "Untitled" && currentBody.trim().length === 0) return;
 
     setIsSaving(true);
     setSaveStatus("");
 
-    const payload = {
-      title: currentTitle,
-      content: currentBody,
-    };
-
     try {
-      // Create new note
-      await api.post("/notes", payload);
+      // Send the POST request to our API
+      await api.post("/notes", {
+        title: currentTitle,
+        content: currentBody,
+      });
+      
       setSaveStatus("Note saved to MongoDB!");
-      // Reset form to default blank state
+      
+      // Reset the form back to a blank state after a successful save
       setTitle("");
       setBody("");
     } catch (error) {
@@ -46,7 +46,7 @@ const Editor: React.FC = () => {
     }
   };
 
-  // Clear save status after a few seconds
+  // Automatically clear the save status message after 3 seconds
   useEffect(() => {
     if (saveStatus) {
       const timer = setTimeout(() => setSaveStatus(""), 3000);
