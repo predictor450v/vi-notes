@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// Axios instance — configured for local backend
+// Axios 
 const api = axios.create({
   baseURL: "http://localhost:5000/api",
   headers: {
