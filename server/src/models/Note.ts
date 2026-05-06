@@ -8,9 +8,10 @@ export interface INote extends Document {
 
   analysis: {
     totalTime: number;
-    typingSpeed: number;
-    totalWords: number;
-    totalCharacters: number;
+    typingSpeed: number,
+    totalWords: number,
+    totalCharacters: number,
+
   };
 }
 
@@ -32,7 +33,6 @@ const noteSchema = new Schema<INote>(
       totalWords: Number,
       totalCharacters: Number,
     },
-  
   },
   {
     timestamps: true, 

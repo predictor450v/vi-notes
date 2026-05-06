@@ -14,11 +14,15 @@ const Editor: React.FC = () => {
   const [body, setBody] = useState<string>("");
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [saveStatus, setSaveStatus] = useState<string>("");
+  const [startTime, setStartTime] = useState<number | null>(null);
+ 
 
   // Handle form submission to save the note to the backend
   const handleSubmit = async () => {
     const currentTitle = title.trim() || "Untitled";
     const currentBody = body;
+
+    const totalTime = Math.floor((Date.now() - startTime) / 1000);
 
     // Do nothing if both title and body are completely empty
     if (currentTitle === "Untitled" && currentBody.trim().length === 0) return;
@@ -31,6 +35,9 @@ const Editor: React.FC = () => {
       await api.post("/notes", {
         title: currentTitle,
         content: currentBody,
+        analysis: {
+            totalTime,
+        },
       });
       
       setSaveStatus("Note saved to MongoDB!");
@@ -38,6 +45,8 @@ const Editor: React.FC = () => {
       // Reset the form back to a blank state after a successful save
       setTitle("");
       setBody("");
+      setStartTime(null);
+
     } catch (error) {
       console.error("Save failed:", error);
       setSaveStatus("Failed to save note");
@@ -71,7 +80,12 @@ const Editor: React.FC = () => {
         className="editor-body"
         placeholder="Start writing..."
         value={body}
-        onChange={(e) => setBody(e.target.value)}
+        onChange={(e) => {
+            if (startTime === null) {
+                setStartTime(Date.now());
+            }
+            setBody(e.target.value);
+        }}
         spellCheck={false}
       />
 
