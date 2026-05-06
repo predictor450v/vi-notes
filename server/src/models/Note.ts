@@ -5,6 +5,13 @@ export interface INote extends Document {
   content: string;
   createdAt: Date;
   updatedAt: Date;
+
+  analysis: {
+    totalTime: number;
+    typingSpeed: number;
+    totalWords: number;
+    totalCharacters: number;
+  };
 }
 
 const noteSchema = new Schema<INote>(
@@ -19,6 +26,13 @@ const noteSchema = new Schema<INote>(
       type: String,
       default: "",
     },
+     analysis: {
+      totalTime: Number,
+      typingSpeed: Number,
+      totalWords: Number,
+      totalCharacters: Number,
+    },
+  
   },
   {
     timestamps: true, 
