@@ -25,6 +25,7 @@ const Editor: React.FC = () => {
     const totalTime = Math.floor((Date.now() - startTime) / 1000);  // total time in seconds
     const totalWords = currentBody.trim().split(" ").filter(Boolean).length;  // total words
     const totalCharacters = currentBody.length;  // total characters
+    const typingSpeed = Math.round((totalWords / totalTime) * 60); // typing speed in words per minute
 
     // Do nothing if both title and body are completely empty
     if (currentTitle === "Untitled" && currentBody.trim().length === 0) return;
@@ -41,6 +42,7 @@ const Editor: React.FC = () => {
             totalTime,
             totalWords,
             totalCharacters,
+            typingSpeed,
         },
       });
       
