@@ -27,7 +27,7 @@ const noteSchema = new Schema<INote>(
       type: String,
       default: "",
     },
-     analysis: {
+    analysis: {
       totalTime: Number,
       typingSpeed: Number,
       totalWords: Number,
@@ -35,7 +35,7 @@ const noteSchema = new Schema<INote>(
     },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 
